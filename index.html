@@ -6,28 +6,41 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Лавка Здоровья</h1>
-        <nav>
-            <button onclick="showProducts('vitamins')">Витамины</button>
-            <button onclick="showProducts('supplements')">БАДы</button>
-            <button onclick="showProducts('sport')">Спортпит</button>
-            <button onclick="showProducts('medical')">Медтовары</button>
-            <button onclick="showProducts('dental')">Стоматология</button>
-        </nav>
-    </header>
-    <main>
-        <div id="product-list"></div>
-        <div id="cart">
-            <h2>Корзина</h2>
-            <ul id="cart-list"></ul>
-            <button onclick="checkout()">Оформить заказ</button>
-        </div>
-    </main>
-    <div id="popup" class="popup">
-        <p>Добро пожаловать в Лавку Здоровья!</p>
-        <button onclick="closePopup()">Закрыть</button>
+<header>
+    <h1>Лавка Здоровья</h1>
+    <nav>
+        <button onclick="showCategory('Лекарства')">Лекарства</button>
+        <button onclick="showCategory('Витамины')">Витамины</button>
+        <button onclick="showCategory('Спортпит')">Спортивное питание</button>
+        <button onclick="showCategory('Медтовары')">Медицинские товары</button>
+        <button onclick="showCategory('Стоматология')">Стоматология</button>
+        <button onclick="showEducational()">Статьи и советы</button>
+    </nav>
+</header>
+
+<main>
+    <section id="product-list"></section>
+    <section id="cart">
+        <h2>Корзина</h2>
+        <ul id="cart-items"></ul>
+        <p>Итого: <span id="total-price">0</span>₽</p>
+        <button onclick="checkout()">Оформить заказ</button>
+    </section>
+</main>
+
+<footer>
+    <p>Контакты: +7 (999) 123-45-67 | lavkazdorovya@yandex.ru</p>
+    <button onclick="openFeedback()">Обратная связь</button>
+</footer>
+
+<div id="popup" class="hidden">
+    <div class="popup-content">
+        <h3>Связаться с нами</h3>
+        <p>Напишите нам в <a href="https://t.me/yourbot" target="_blank">Telegram</a> или <a href="https://wa.me/79991234567" target="_blank">WhatsApp</a>.</p>
+        <button onclick="closeFeedback()">Закрыть</button>
     </div>
-    <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
