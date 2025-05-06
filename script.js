@@ -1,19 +1,20 @@
 const products = {
-    vitamins: [{ name: 'Витамин C', price: 300 }, { name: 'Витамин D', price: 400 }],
-    supplements: [{ name: 'Омега-3', price: 500 }, { name: 'Магний', price: 350 }],
-    sport: [{ name: 'Протеин', price: 1500 }, { name: 'Креатин', price: 1200 }],
-    medical: [{ name: 'Бинты', price: 100 }, { name: 'Пластыри', price: 50 }],
-    dental: [{ name: 'Зубные щетки', price: 150 }, { name: 'Паста лечебная', price: 250 }]
+    'Лекарства': [{ name: 'Парацетамол', price: 100 }, { name: 'Ибупрофен', price: 150 }],
+    'Витамины': [{ name: 'Витамин C', price: 200 }, { name: 'Витамин D', price: 250 }],
+    'Спортпит': [{ name: 'Протеин', price: 1500 }, { name: 'BCAA', price: 1200 }],
+    'Медтовары': [{ name: 'Пластыри', price: 50 }, { name: 'Бинт', price: 80 }],
+    'Стоматология': [{ name: 'Зубная паста', price: 100 }, { name: 'Щетка', price: 150 }]
 };
+
 let cart = [];
 
-function showProducts(category) {
-    const productList = document.getElementById('product-list');
-    productList.innerHTML = '';
-    products[category].forEach(p => {
-        const item = document.createElement('div');
-        item.innerHTML = `${p.name} - ${p.price}₽ <button onclick="addToCart('${p.name}', ${p.price})">Добавить</button>`;
-        productList.appendChild(item);
+function showCategory(category) {
+    const list = document.getElementById('product-list');
+    list.innerHTML = `<h2>${category}</h2>`;
+    products[category].forEach(item => {
+        const div = document.createElement('div');
+        div.innerHTML = `${item.name} — ${item.price}₽ <button onclick="addToCart('${item.name}', ${item.price})">Добавить</button>`;
+        list.appendChild(div);
     });
 }
 
@@ -23,25 +24,37 @@ function addToCart(name, price) {
 }
 
 function updateCart() {
-    const cartList = document.getElementById('cart-list');
+    const cartList = document.getElementById('cart-items');
     cartList.innerHTML = '';
+    let total = 0;
     cart.forEach(item => {
+        total += item.price;
         const li = document.createElement('li');
-        li.textContent = `${item.name} - ${item.price}₽`;
+        li.textContent = `${item.name} — ${item.price}₽`;
         cartList.appendChild(li);
     });
+    document.getElementById('total-price').textContent = total;
 }
 
 function checkout() {
-    alert('Заказ оформлен! Мы свяжемся с вами.');
+    alert('Ваш заказ оформлен! Мы свяжемся с вами.');
     cart = [];
     updateCart();
 }
 
-function closePopup() {
-    document.getElementById('popup').style.display = 'none';
+function openFeedback() {
+    document.getElementById('popup').classList.remove('hidden');
 }
 
-window.onload = () => {
-    document.getElementById('popup').style.display = 'block';
-};
+function closeFeedback() {
+    document.getElementById('popup').classList.add('hidden');
+}
+
+function showEducational() {
+    const list = document.getElementById('product-list');
+    list.innerHTML = `
+        <h2>Советы по здоровью</h2>
+        <p>Читайте наши статьи и рекомендации на сайте и в Telegram!</p>
+        <p><a href="https://t.me/yourchannel" target="_blank">Перейти в Telegram-канал</a></p>
+    `;
+}
