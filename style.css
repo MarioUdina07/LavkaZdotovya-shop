@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0;
+}
+header {
+    background: #567b4d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+nav button {
+    margin: 5px;
+    padding: 10px;
+}
+main {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+#product-list, #cart {
+    background: white;
+    padding: 20px;
+    width: 45%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background: #567b4d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: none;
+}
